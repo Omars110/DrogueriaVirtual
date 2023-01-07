@@ -22,3 +22,6 @@ Route::get('/inicio', "Controlador@inicio");
 
 Route::get('/inicio', "Controlador@inicio");
 Route::get('/inicio', "Controlador@inicio");
+
+Route::get('/inicio', "Controlador@inicio");
+Route::get('/inicio', "Controlador@inicio");
