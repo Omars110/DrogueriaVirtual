@@ -16,12 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/inicio', "Controlador@inicio");
-Route::get('/inicio', "Controlador@inicio");
-
-Route::get('/inicio', "Controlador@inicio");
-Route::get('/inicio', "Controlador@inicio");
-
-Route::get('/inicio', "Controlador@inicio");
-Route::get('/inicio', "Controlador@inicio");
