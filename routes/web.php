@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ControladorProducto;
+use App\Http\Controllers\cursoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('plantilla');
 });
+
+Route::get('/index','ControladorProducto@')->name('');
+Route::get('/nuevo','ControladorProducto@ingresar_producto')->name('nuevo.medicamento');
+Route::post('/nuevo','ControladorProducto@ingresar_producto')->name('nuevo.medicamento');
+Route::get('/medicamentos','ControladorProducto@seleccionarTodoLosP')->name('selecionar.medicamentos');
