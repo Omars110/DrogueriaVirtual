@@ -19,7 +19,12 @@ Route::get('/', function () {
     return view('plantilla');
 });
 
+/* Ingresar producto */
 Route::get('/index','ControladorProducto@')->name('');
-Route::get('/nuevo','ControladorProducto@ingresar_producto')->name('nuevo.medicamento');
+Route::get('/nuevo','ControladorProducto@index')->name('nuevo.medicamento');
 Route::post('/nuevo','ControladorProducto@ingresar_producto')->name('nuevo.medicamento');
 Route::get('/medicamentos','ControladorProducto@seleccionarTodoLosP')->name('selecionar.medicamentos');
+
+/* Seccion */
+Route::get('/seccion', 'ControladorSeccion@index');
+Route::post('/seccion', 'ControladorSeccion@Ingresar_seccion');

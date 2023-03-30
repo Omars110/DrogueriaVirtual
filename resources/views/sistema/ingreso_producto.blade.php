@@ -30,6 +30,10 @@
                   <input type="date" name="txtFechaDeIngreso" id="txtFechaDeIngreso" value="" class="form-control" style="border-radius: 35px" required>
                </div>
                <div class="form-group col-lg-6">
+                  <label for="">Precio:*</label>
+                  <input type="number" name="numPrecio" id="numPrecio" value="" class="form-control" style="border-radius: 35px" required>
+               </div>
+               <div class="form-group col-lg-6">
                   <label for="">Fecha de vencimiento:*</label>
                   <input type="date" name="txtFechaDeVenciemiento" id="txtFechaDeVenciemiento" value="" class="form-control" style="border-radius: 35px" required>
                </div>
@@ -61,7 +65,7 @@
                      <option value="2">A-1</option>
                   </select>
                </div>
-               <div class="form-group col-lg-10">
+               <div class="form-group col-lg-6">
                   <label for="">Tipo de medicamento:*</label>
                   <select name="lstTipoMed" id="lstTipoMed" class="form-control" style="border-radius: 35px" required>
                      <option value="" selected>-Seleccionar-</option>
@@ -70,7 +74,7 @@
                   </select>
                </div>
                
-               <div class="form-group col-lg-2">
+               <div class="form-group col-lg-6">
                   <button type="submit" name="btnEnviar" id="" value="" class="btn btn-primary mt-3" style="border-radius: 35px">Enviar</button>
                   <button type="submit" name="btnCancelar" id="" value="" class="btn btn-primary mt-3" style="border-radius: 35px">Cancelar</button>
                </div>

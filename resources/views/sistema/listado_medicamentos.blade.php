@@ -10,26 +10,33 @@
             <thead>
                <tr>
                   <th>Nombre</th>
-                  <th>Fabricante</th>
-                  <th>Miligramos</th>
-                  <th>Cantidad</th>
-                  <th>Precio unitario</th>
-                  <th>Precio por caja</th>
-                  <th>Codigo</th>
+                  <th>Codigo de barra</th>
+                  <th>C-interna</th>
+                  <th>C-externa</th>
+                  <th>F-ingreso</th>
+                  <th>Precio</th>
+                  <th>F-vencimiento</th>
                   <th>Seccion</th>
+                  <th>Proveedor</th>
+                  <th>Laboratorio</th>
+                  <th>Tipo-M</th>
                   </tr>
             </thead>
          <tbody>
-               @foreach ($aMedicamentos as $item)
+               @foreach ($aMedicamentos as $medicamento)
                   <tr>
-                     <td>{{ $item->nombre_P }}</td>
-                     <td>{{ $item->fabricante_P }}</td>
-                     <td>{{ $item->miligramos }}</td>
-                     <td>{{ $item->cantidad_P }}</td>
-                     <td>{{ $item->precio_unitario}}</td>
-                     <td>{{ $item->precio_caja }}</td>
-                     <td>{{ $item->codigo_P }}</td>
-                     <td>{{ $item->seccion }}</td>
+                     <td>{{ $medicamento->nombre }}</td>
+                     <td>{{ $medicamento->codigo_barra }}</td>
+                     <td>{{ $medicamento->cantidad_interna }}</td>
+                     <td>{{ $medicamento->cantidad_externa }}</td>
+                     <td>{{ $medicamento->fecha_ingreso}}</td>
+                     <td>{{ $medicamento->precio }}</td>
+                     <td>{{ $medicamento->fecha_vencimiento }}</td>
+                     <td>{{ $medicamento->lote }}</td>
+                     <td>{{ $medicamento->fk_idseccion }}</td>
+                     <td>{{ $medicamento->fk_idproveedor }}</td>
+                     <td>{{ $medicamento->fk_idlaboratorio }}</td>
+                     <td>{{ $medicamento->fk_idtipo_medicamento }}</td>
                   </tr>
                @endforeach
          </tbody>

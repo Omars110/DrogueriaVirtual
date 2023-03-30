@@ -14,6 +14,7 @@ class Producto extends Model
                            'codigo_barra',
                            'cantidad_interna',
                            'cantidad_externa',
+                           'precio',
                            'fecha_ingreso',
                            'fecha_vencimiento',
                            'lote',
@@ -37,6 +38,7 @@ class Producto extends Model
       $this->cantidad_interna = $request->input('txtCantidadInterna');
       $this->cantidad_externa = $request->input('txtCantidadExterna');
       $this->fecha_ingreso = $request->input('txtFechaDeIngreso');
+      $this->precio = $request->input('numPrecio');
       $this->fecha_vencimiento = $request->input('txtFechaDeVenciemiento');
       $this->lote = $request->input('txtLote');
       $this->fk_idseccion = $request->input('lstSeccion');
@@ -63,18 +65,20 @@ class Producto extends Model
                                        cantidad_interna,
                                        cantidad_externa,
                                        fecha_ingreso,
+                                       precio,
                                        fecha_vencimiento,
                                        lote,
                                        fk_idseccion,
                                        fk_idproveedor,
                                        fk_idlaboratorio,
                                        fk_idtipo_medicamento)
-                                     VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                                     VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
       $resultado = DB::insert($sql,[$this->nombre,
                                     $this->codigo_barra,
                                     $this->cantidad_interna,
                                     $this->cantidad_externa,
                                     $this->fecha_ingreso,
+                                    $this->precio,
                                     $this->fecha_vencimiento,
                                     $this->lote,
                                     $this->fk_idseccion,
@@ -86,18 +90,19 @@ class Producto extends Model
    }
    public function seleccionarTodoLosP()
    {
-      $sql="SELECT idmedicamento,
-                  nombre,
-                  codigo_barra,
-                  cantidad_interna,
-                  cantidad_externa,
-                  fecha_ingreso,
-                  fecha_vencimiento,
-                  lote,
-                  fk_idseccion,
-                  fk_idproveedor,
-                  fk_idlaboratorio,
-                  fk_idtipo_medicamento FROM medicamentos";
+      $sql = "SELECT idmedicamento,
+                     nombre,
+                     codigo_barra,
+                     cantidad_interna,
+                     cantidad_externa,
+                     fecha_ingreso,
+                     precio,
+                     fecha_vencimiento,
+                     lote,
+                     fk_idseccion,
+                     fk_idproveedor,
+                     fk_idlaboratorio,
+                     fk_idtipo_medicamento FROM medicamentos";
       $productos = DB::select($sql);
       return $productos;
    }
