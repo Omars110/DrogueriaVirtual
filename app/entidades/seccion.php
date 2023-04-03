@@ -25,15 +25,28 @@ class Seccion extends Model
    public function insertar()
    {
       $sql = "INSERT INTO secciones(columna, 
-                                  fila)    
-                                  VALUE(?, ?);";
+                                    fila)    
+                                    VALUE(?, ?);";
       DB::insert($sql,[$this->columna,$this->fila]);
    }
 
    public function seleccionarTodo()
    {
-      $sql = "SELECT idseccion, columna, fila FROM secciones";
+      $sql = "SELECT idseccion, 
+                     columna, 
+                     fila 
+                     FROM secciones";
       $secciones = DB::select($sql);
       return $secciones;
+   }
+
+   public function seleccionarPorId($id)
+   {
+      $sql = 'SELECT idseccion, 
+                     columna, 
+                     fila
+                     FROM secciones WHERE idseccion = :id';
+      $resultado = db::select($sql,['id'=>$id]);
+      return($resultado);
    }
 }

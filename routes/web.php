@@ -27,4 +27,6 @@ Route::get('/medicamentos','ControladorProducto@seleccionarTodoLosP')->name('sel
 
 /* Seccion */
 Route::get('/seccion', 'ControladorSeccion@index');
-Route::post('/seccion', 'ControladorSeccion@Ingresar_seccion');
+Route::get('/seccion/nuevo', 'ControladorSeccion@nuevo');
+Route::post('/seccion/nuevo', 'ControladorSeccion@Ingresar_seccion');
+Route::get('/seccion/{id}', 'ControladorSeccion@editar');

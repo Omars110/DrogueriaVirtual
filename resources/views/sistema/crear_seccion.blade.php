@@ -4,6 +4,7 @@
 @section('contenido')
 <section class="container">
    <form action="" method="POST">
+      @foreach ($aSeccion as $seccion)
       <div class="row">
          <div class="form-group col-lg-6">
 
@@ -12,39 +13,17 @@
             </div>
 
             <div class="mt-3">
-               <input type="text" name="txtColumna" id="txtColumna" style="border-radius: 35px" class="form-control" placeholder="Columna" required>
+               <input type="text" name="txtColumna" id="txtColumna" value="{{$seccion->columna}}" style="border-radius: 35px" class="form-control" placeholder="Columna" required>
             </div>
             <div class="mt-3">
-               <input type="text" name="txtFila" id="txtFila" class="form-control" style="border-radius: 35px" placeholder="Fila">
+               <input type="text" name="txtFila" id="txtFila" value="{{$seccion->fila}}" class="form-control" style="border-radius: 35px" placeholder="Fila" required>
             </div>
             <div>
                <button type="submit" class="mt-2 btn btn-primary">Enviar</button>
+               <button class="mt-2 btn btn-danger"><a href="/seccion">Regresar</a></button>
             </div>
- 
          </div>
-
-         <div class="form-group col-lg-6">
-            <table class="table table-hover">
-               <thead class="border">
-                  <tr>
-                     <th>COLUMNA</th>
-                     <th>FILA</th>
-                     <th>EDITAR</th>
-                  </tr>
-               </thead>
-                  
-               <tbody class="border">
-                  @foreach ($aSeccion  as $seccion)
-                      <tr class="border">
-                        <td>{{$seccion->columna}}</td>
-                        <td>{{$seccion->fila}}</td>
-                      </tr>
-                  @endforeach
-               </tbody>
-            </table>
-         </div>
-
-      </div>
-   </form>
+      @endforeach
+   </form>   
 </section>
 @endsection
