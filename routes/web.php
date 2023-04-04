@@ -30,3 +30,7 @@ Route::get('/seccion', 'ControladorSeccion@index');
 Route::get('/seccion/nuevo', 'ControladorSeccion@nuevo');
 Route::post('/seccion/nuevo', 'ControladorSeccion@Ingresar_seccion');
 Route::get('/seccion/{id}', 'ControladorSeccion@editar');
+Route::post('/seccion/{id}', 'ControladorSeccion@Ingresar_seccion');
+
+
+

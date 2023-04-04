@@ -4,6 +4,13 @@
 @section('contenido')
 <section class="container">
     <div class="form-group col-lg-6">
+
+         @if(isset($mensaje)==1)
+            <div class="alert alert-danger" role="alert">
+               No hay registro para mostrar!
+            </div>
+         @endif
+         <a class="btn-primary btn mb-2" href="/seccion/nuevo">Nueva seccion</a>
          <table class="table table-hover">
             <thead class="border">
                <tr>
@@ -23,7 +30,6 @@
                   @endforeach
                </tbody>
             </table>
-    </div>
-
+      </div>
 </section>
 @endsection

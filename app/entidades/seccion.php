@@ -17,7 +17,7 @@ class Seccion extends Model
 
    public function CargarDatosFormulario($request)
    {
-      $this->idseccion = $request->input('idseccion');
+      $this->idseccion = $request->input('txtId');
       $this->columna = $request->input('txtColumna');
       $this->fila = $request->input('txtFila');
    }
@@ -27,7 +27,8 @@ class Seccion extends Model
       $sql = "INSERT INTO secciones(columna, 
                                     fila)    
                                     VALUE(?, ?);";
-      DB::insert($sql,[$this->columna,$this->fila]);
+      $resultado = DB::insert($sql,[$this->columna,$this->fila]);
+      return $resultado;
    }
 
    public function seleccionarTodo()
@@ -42,11 +43,22 @@ class Seccion extends Model
 
    public function seleccionarPorId($id)
    {
-      $sql = 'SELECT idseccion, 
+      $sql = "SELECT idseccion, 
                      columna, 
                      fila
-                     FROM secciones WHERE idseccion = :id';
+                     FROM secciones WHERE idseccion = :id";
       $resultado = db::select($sql,['id'=>$id]);
       return($resultado);
+   }
+
+   public function actualizar()
+   {  
+      $sql = "UPDATE secciones SET columna=?, 
+                                    fila=? 
+                                    WHERE idseccion = ? ";
+      $resultado = DB::update($sql,[$this->columna,
+                                    $this->fila,
+                                    $this->idseccion]);
+      return $resultado;
    }
 }
