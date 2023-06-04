@@ -60,9 +60,9 @@
 
           <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="true" href="">Proveedor</a> 
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Listar Proveedores</a></li>
+              <li><a class="dropdown-item" href="/proveedor/index">Listar Proveedores</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Nuevo Proveedor</a></li>
+              <li><a class="dropdown-item" href="/proveedor/nuevo">Nuevo Proveedor</a></li>
             </ul>
           </li>
 

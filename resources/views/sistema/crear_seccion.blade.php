@@ -15,6 +15,7 @@
                      Erros al guardar seccion porfavor verifique!
                   </div>
                @endif
+               
                <div>
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
                </div>

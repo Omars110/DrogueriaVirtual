@@ -61,4 +61,11 @@ class Seccion extends Model
                                     $this->idseccion]);
       return $resultado;
    }
+
+   public function eleminar($id)
+   {
+      $sql = "DELETE FROM secciones WHERE idseccion = :id";
+      $rDelete = DB::delete($sql,['id'=>$id]);
+      return($rDelete);
+   }
 }

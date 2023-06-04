@@ -70,9 +70,10 @@ class ControladorSeccion extends Controller{
         return view('sistema.crear_seccion', compact('titulo','aSeccion'));
     }
 
-    public function actualizar(Request $request, $id)
-    {
-
-    }
-
+    public function eliminar($id)
+   {
+      $seccion = new Seccion();
+      $seccion->eleminar($id);
+      return(redirect('/seccion'));
+   }
 }
