@@ -38,7 +38,7 @@ Route::get('/seccion/eliminar/{id}', 'ControladorSeccion@eliminar');
 Route::get('/proveedor/index','ControladorProveedor@index');
 Route::get('/proveedor/nuevo', 'ControladorProveedor@nuevo');
 Route::post('/proveedor/nuevo', 'ControladorProveedor@ingresar_proveedor');
-Route::get('/proveedor/filtrar', 'ControladorProveedor@filtrado');//direcion que tarbaja con AJAX
+Route::get('/proveedor/filtrar', 'ControladorProveedor@filtrado');//direcion que trabaja con AJAX
 Route::get('/proveedor/editar/{id}', 'ControladorProveedor@editar');
 Route::post('/proveedor/editar/{id}', 'ControladorProveedor@ingresar_proveedor');
 Route::get('/proveedor/eliminar/{id}', 'ControladorProveedor@eliminar');

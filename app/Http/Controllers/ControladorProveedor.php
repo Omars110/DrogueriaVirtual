@@ -93,7 +93,6 @@ class ControladorProveedor extends Controller{
          }else{
             echo 'noDato';
          }
-         //exit;
       }   
 
       if($_GET['valid'] == 'omarsoto12'){//NO ALVIDAR CAMBIAR ESTE COMANDO
@@ -118,7 +117,6 @@ class ControladorProveedor extends Controller{
          }else{
             echo 'noDato';
          }
-         exit;
       }  
    }
 }
