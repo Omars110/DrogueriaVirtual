@@ -36,7 +36,7 @@ class ControladorProveedor extends Controller{
       $proveedor->CargarDatosFormulario($request);
 
       if($_POST['txtIdProveedor'] > 0) {
-         $mensaje == 1;
+         $mensaje = 1;
          $proveedor->actualizar();
          $aProveedor = array();
          return(view('sistema.crear_proveedor',compact('titulo', 'mensaje', 'aProveedor')));
@@ -44,10 +44,10 @@ class ControladorProveedor extends Controller{
          $rInsert = $proveedor->insertar();
          $aProveedor = array();
          if ($rInsert == 1) {
-            $mensaje == 1;
+            $mensaje = 1;
             return(view('sistema.crear_proveedor',compact('titulo', 'mensaje', 'aProveedor')));
          } else {
-            $mensaje == 2;
+            $mensaje = 2;
             return(view('sistema.crear_proveedor',compact('titulo', 'mensaje', 'aProveedor')));
          }
       }

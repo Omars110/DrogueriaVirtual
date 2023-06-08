@@ -30,8 +30,8 @@
                   <input type="text" name="txtFila" id="txtFila" value="{{!$aSeccion? '': $aSeccion[0]->fila;}}" class="form-control" style="border-radius: 35px" placeholder="Fila" required>
                </div>
                <div>
-                  <button type="submit" class="mt-2 btn btn-primary">Guardar</button>
-                  <button type="button" class="mt-2 btn btn-danger"><a href="/seccion">Regresar</a></button>
+                  <button type="submit" class="mt-2 btn btn-primary" style="border-radius: 35px">Guardar</button>
+                  <a href="/seccion" class="btn btn-danger mt-2" style="border-radius: 35px">Regresar</a>
                </div>
          </div> 
    </form>   

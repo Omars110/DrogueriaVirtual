@@ -24,15 +24,15 @@ if($_GET)
             <form action="" method="POST">
                <div class="row">
                   <div class="col-2">
-                     <a class="btn-primary btn mb-2 ml-1" href="/proveedor/nuevo">Nuevo proveedor</a>
+                     <a class="btn-primary btn mb-2 ml-1" href="/proveedor/nuevo" style="border-radius: 20px"><i class="fa-solid fa-plus fa-beat" style="color: #ffffff;"></i>  Nuevo proveedor</a>
                   </div>  
                   <div class="col-10">
                      <div class="row d-flex">
                         <div class="col-5">
-                           <input type="text" name="buscarProveedor" id="buscarProveedortxt" placeholder="Buscar" class="form-control mb-2 ml-2">
+                           <input type="text" name="buscarProveedor" id="buscarProveedortxt" placeholder="Buscar" class="form-control mb-2 ml-2" style="border-radius: 20px">
                         </div>
                         <div class="col-0">
-                           <a class="btn-primary btn mb-2" id="buscarProveedorbutton" href="#">Buscar</a>
+                           <a class="btn-primary btn mb-2" id="buscarProveedorbutton" href="#" style="border-radius: 100px"><i class="fa-solid fa-magnifying-glass fa-beat" style="color: #ffffff;"></i></a>
                         </div>
                      </div>
                   </div>  

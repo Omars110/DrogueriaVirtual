@@ -33,6 +33,7 @@ class Producto extends Model
       //print_r($get);
       //exit;
 
+      $this->idmedicamento = $request->input('');
       $this->nombre = $request->input('txtNombre');
       $this->codigo_barra = $request->input('txtCodigoBarra');
       $this->cantidad_interna = $request->input('txtCantidadInterna');

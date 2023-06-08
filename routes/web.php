@@ -20,9 +20,8 @@ Route::get('/', function () {
 });
 
 /* Producto */
-Route::get('/index','ControladorProducto@')->name('');
-Route::get('/nuevo','ControladorProducto@index')->name('nuevo.medicamento');
-Route::post('/nuevo','ControladorProducto@ingresar_producto')->name('nuevo.medicamento');
+Route::get('/producto/index','ControladorProducto@index')->name('nuevo.medicamento');
+Route::get('/producto/nuevo','ControladorProducto@nuevo')->name('nuevo.medicamento');
 Route::get('/medicamentos','ControladorProducto@seleccionarTodoLosP')->name('selecionar.medicamentos');
 
 /* Seccion */
@@ -43,8 +42,18 @@ Route::get('/proveedor/editar/{id}', 'ControladorProveedor@editar');
 Route::post('/proveedor/editar/{id}', 'ControladorProveedor@ingresar_proveedor');
 Route::get('/proveedor/eliminar/{id}', 'ControladorProveedor@eliminar');
 
+/* Laboratorio */
+Route::get('/laboratorio/index', 'ControladorLaboratorio@index');
+Route::get('/laboratorio/nuevo', 'ControladorLaboratorio@nuevo');
+Route::post('/laboratorio/nuevo', 'ControladorLaboratorio@insertar_L');
+Route::get('/laboratorio/editar/{id}', 'ControladorLaboratorio@editar');
+Route::post('/laboratorio/editar/{id}', 'ControladorLaboratorio@insertar_L');
+Route::get('/laboratorio/eliminar/{id}', 'ControladorLaboratorio@eliminar');
 
-
-
-
-
+/* Tipo medicamento */
+Route::get('/Tipo_medicamento/index', 'ControladorTipoMedicamento@index');
+Route::get('/Tipo_medicamento/nuevo', 'ControladorTipoMedicamento@nuevo');
+Route::post('/Tipo_medicamento/nuevo', 'ControladorTipoMedicamento@ingresar_tipoMedi');
+Route::get('/Tipo_medicamento/editar/{id}', 'ControladorTipoMedicamento@editar');
+Route::post('/Tipo_medicamento/editar/{id}', 'ControladorTipoMedicamento@ingresar_tipoMedi');
+Route::get('/Tipo_medicamento/eliminar/{id}', 'ControladorTipoMedicamento@eliminar');

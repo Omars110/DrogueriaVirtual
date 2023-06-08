@@ -44,9 +44,9 @@
 
           <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" href="">Medicamentos</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/medicamentos">Lista Medicamentos</a></li>
+              <li><a class="dropdown-item" href="/producto/index">Lista Medicamentos</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="/nuevo">Nuevo Medicamento</a></li>
+              <li><a class="dropdown-item" href="/producto/nuevo">Nuevo Medicamento</a></li>
             </ul>
           </li>   
 
@@ -68,17 +68,17 @@
 
           <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="true" href="">laboratorio</a> 
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Listar Laboratorios</a></li>
+              <li><a class="dropdown-item" href="/laboratorio/index">Listar Laboratorios</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Nuevo Laboratorio</a></li>
+              <li><a class="dropdown-item" href="/laboratorio/nuevo">Nuevo Laboratorio</a></li>
             </ul>
           </li>
 
           <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="true" href="">Tipo medicamento</a> 
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Listar tipos</a></li>
+              <li><a class="dropdown-item" href="/Tipo_medicamento/index">Listar tipos de medicamento</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">nuevo Tipo</a></li>
+              <li><a class="dropdown-item" href="/Tipo_medicamento/nuevo">nuevo Tipo de medicamento</a></li>
             </ul>
           </li>
         </ul>
@@ -98,6 +98,7 @@
    <div class="container mt-3">
       <h2>@yield('titulo')</h2>
    </div>
+
    <div>
       @yield('contenido')
    </div>

@@ -5,8 +5,9 @@
 <section class="container">
     <form action="" method="POST">
         <div class="row">
-         <div class="col-12">
-            @if (isset($mensaje)==1)
+         <!-- ======= Section mesenger ======= -->  
+            <div class="col-12">
+               @if (isset($mensaje)==1)
                   <div class="alert alert-success" role="alert">
                      Proveedor fue guardado con Exito!
                   </div>
@@ -15,7 +16,9 @@
                      Erros al guardar proveedor porfavor verifique!
                   </div>
                @endif
-         </div>
+            </div>
+            <!-- ======= Section mesenger ======= -->  
+
             <!-- ======= Section token ======= -->   
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <!-- ======= Section token ======= -->
@@ -41,8 +44,8 @@
             </div>
 
             <div class="form-gruop col-md-6">
-               <button type="submit" class="mt-2 btn btn-primary">Guardar</button>
-               <a class="btn-danger btn mt-2" href="/proveedor/index">Regresar</a>                  
+               <button type="submit" class="mt-2 btn btn-primary" style="border-radius: 35px">Guardar</button>
+               <a class="btn-danger btn mt-2" href="/proveedor/index" style="border-radius: 35px">Regresar</a>                  
             </div>
             
         </div>

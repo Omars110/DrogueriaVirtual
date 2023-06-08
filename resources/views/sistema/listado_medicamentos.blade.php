@@ -3,7 +3,7 @@
 @section('titulo',$titulo)
 
 @section('contenido')
-<div class="container">
+<div>
    <div class="row">
       <div class="col-12">
          <table class="table border table-hover text-center">
@@ -22,7 +22,7 @@
                   <th>Tipo-M</th>
                   </tr>
             </thead>
-         <tbody>
+            <tbody id="">
                @foreach ($aMedicamentos as $medicamento)
                   <tr>
                      <td>{{ $medicamento->nombre }}</td>
@@ -39,7 +39,7 @@
                      <td>{{ $medicamento->fk_idtipo_medicamento }}</td>
                   </tr>
                @endforeach
-         </tbody>
+            </tbody>
          </table>
       </div>
    </div>

@@ -9,6 +9,11 @@
                <div>
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
                </div>
+               <div>
+               <!-- ======= Cacturar id para poder actualizar y registar ======= -->
+                  <input type="hidden" name="txtIdmedicamento" value="">
+               <!-- ======= Cacturar id para poder actualizar y registar ======= -->
+               </div>
                <div class="form-group col-lg-6">
                   <label for="">Nombre:*</label>
                   <input type="text" name="txtNombre" id="txtNombre" value="" class="form-control" style="border-radius: 35px" required>
@@ -41,42 +46,53 @@
                   <label for="">Numero lote:*</label>
                   <input type="text" name="txtLote" id="txtLote" value="" class="form-control" style="border-radius: 35px" required>
                </div>
+               <!-- ======= Section sesion ======= -->
                <div class="form-group col-lg-6">
                   <label for="">Seccion:*</label>
                   <select name="lstSeccion" id="lstSeccion" class="form-control" style="border-radius: 35px" required>
                      <option value="" selected>-Seleccionar-</option>
-                     <option value="1">A-1</option>
-                     <option value="2">A-1</option>
+                     @foreach ($aSeccion as $seccion)
+                        <option value={{$seccion->idseccion}}>{{$seccion->columna}} / {{$seccion->fila}}</option>
+                     @endforeach
                   </select>
                </div>
+               <!-- ======= Section sesion ======= --> 
+               <!-- ======= Section proveedor ======= -->
                <div class="form-group col-lg-6">
                   <label for="">Proveedor:*</label>
                   <select name="lstProveedor" id="lstProveedor" class="form-control" style="border-radius: 35px" required>
                      <option value="" selected>-Seleccionar-</option>
-                     <option value="1">A-1</option>
-                     <option value="2">A-1</option>
+                     @foreach ($aProveedor as $proveedores)
+                        <option value={{$proveedores->idproveedor}}>{{$proveedores->nombre}}</option>
+                     @endforeach  
                   </select>
                </div>
+               <!-- ======= Section proveedor ======= -->
+               <!-- ======= Section laboratorios ======= -->
                <div class="form-group col-lg-6">
                   <label for="">laboratorio:*</label>
                   <select name="lstlaboratorio" id="lstlaboratorio" class="form-control" style="border-radius: 35px" required>
                      <option value="" selected>-Seleccionar-</option>
-                     <option value="1">A-1</option>
-                     <option value="2">A-1</option>
+                     @foreach ($aLaboratorio as $laboratorio)
+                     <option value="{{$laboratorio->idlaboratorio}}">{{$laboratorio->nombre_farmaceutica}}</option>
+                     @endforeach
                   </select>
                </div>
+               <!-- ======= Section laboratorios ======= -->
+               <!-- ======= Section tipo medicamentos ======= -->
                <div class="form-group col-lg-6">
                   <label for="">Tipo de medicamento:*</label>
                   <select name="lstTipoMed" id="lstTipoMed" class="form-control" style="border-radius: 35px" required>
                      <option value="" selected>-Seleccionar-</option>
-                     <option value="1">A-1</option>
-                     <option value="2">A-1</option>
+                     @foreach ($aTmedicamento as $tipo)
+                     <option value="{{$tipo->idtipoMedicamento}}">{{$tipo->clasificacion}}</option>
+                     @endforeach
                   </select>
                </div>
-               
+               <!-- ======= Section tipo medicamentos ======= -->               
                <div class="form-group col-lg-6">
-                  <button type="submit" name="btnEnviar" id="" value="" class="btn btn-primary mt-3" style="border-radius: 35px">Enviar</button>
-                  <button type="submit" name="btnCancelar" id="" value="" class="btn btn-primary mt-3" style="border-radius: 35px">Cancelar</button>
+                  <button type="submit" name="btnEnviar" id="" value="" class="btn btn-primary mt-3" style="border-radius: 35px">Guardar</button>
+                  <a href="" class="btn btn-danger mt-3" style="border-radius: 35px">Regresar</a>
                </div>
             </div>
       </form>  
