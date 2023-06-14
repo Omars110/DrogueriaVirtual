@@ -167,7 +167,6 @@ class Producto extends Model
       return($rDelete);
    }
 
-
    public function filtrar($dato)
    {
       $sql = "SELECT idmedicamento,
