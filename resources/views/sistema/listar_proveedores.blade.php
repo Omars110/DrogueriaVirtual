@@ -26,20 +26,15 @@ if($_GET)
                   <div class="col-2">
                      <a class="btn-primary btn mb-2 ml-1" href="/proveedor/nuevo" style="border-radius: 20px"><i class="fa-solid fa-plus fa-beat" style="color: #ffffff;"></i>  Nuevo proveedor</a>
                   </div>  
-                  <div class="col-10">
-                     <div class="row d-flex">
-                        <div class="col-5">
+                  <div class="col-5">
+                     <div class="d-flex">
                            <input type="text" name="buscarProveedor" id="buscarProveedortxt" placeholder="Buscar" class="form-control mb-2 ml-2" style="border-radius: 20px">
-                        </div>
-                        <div class="col-0">
-                           <a class="btn-primary btn mb-2" id="buscarProveedorbutton" href="#" style="border-radius: 100px"><i class="fa-solid fa-magnifying-glass fa-beat" style="color: #ffffff;"></i></a>
-                        </div>
+                           <a class="btn-primary btn mb-2 ml-2" id="buscarProveedorbutton" href="#" style="border-radius: 100px">Buscar  <i class="fa-solid fa-magnifying-glass fa-beat" style="color: #ffffff;"></i></a>
                      </div>
                   </div>  
                </div> 
             </form>
          </div> 
-         
          <!-- Modal -->
          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -72,8 +67,7 @@ if($_GET)
                </thead>
                   
                <tbody class="border" id="proveedores">
-                  <table>
-                  </table>
+                  
                </tbody>
       </div>
 </section>
@@ -83,7 +77,6 @@ $(document).ready(function(){
    $('#buscarProveedortxt').keyup(function (e){ 
       let datoProveedor
       let dato = $('#buscarProveedortxt').val();
-      console.log(dato);
       $.ajax({
          type: "GET",
          url:"{{asset('/proveedor/filtrar')}}",
@@ -93,10 +86,11 @@ $(document).ready(function(){
          dataType: "json",
          success: function (response) 
          {
-            if (response == 'noDato')
+            if (response === 'noDato')
             {
-               $('#proveedores').html('');
-               datoProveedor = 'No hay registro';           
+               $('#mensaje').html(`<div class="alert alert-success" role="alert">
+                                       No hay resultado para mostrar!
+                                    </div>`);          
             }else{
                $('#proveedores').html('');
                response.forEach(function(element,index,arreglo){
@@ -109,8 +103,8 @@ $(document).ready(function(){
                                                 <a href="/proveedor/editar/${element['idproveedor']}"><i class="fa-solid fa-pen-to-square" style="color: #1ed006;"></i></a>
                                                 <a href="/proveedor/eliminar/${element['idproveedor']}"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></a>
                                              </td>
-                                             </tr>`;
-               $('#proveedores').html($('#proveedores').html()+datoProveedor);    
+                                           </tr>`;
+                  $('#proveedores').html($('#proveedores').html()+datoProveedor);    
                });          
             }         
          }
@@ -144,7 +138,7 @@ function tablaContacto(){
                                                    <a href="/proveedor/eliminar/${element['idproveedor']}"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></a>
                                                 </td>
                                              </tr>`; 
-                  $('#proveedores').html($('#proveedores').html()+datoProveedor);    
+                  $('#proveedores').append(datoProveedor);    
                   });          
                }         
             }

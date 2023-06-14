@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,9 +31,11 @@
 <script src="{{ asset('js/bootstrap-select.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
 
+
+
 </head>
 
-<body>
+<body style="background-color: rgb(5, 188, 220)">
 <section>
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid"><a class="navbar-brand" href="/">Drogueria Virtual</a>

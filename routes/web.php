@@ -22,7 +22,11 @@ Route::get('/', function () {
 /* Producto */
 Route::get('/producto/index','ControladorProducto@index')->name('nuevo.medicamento');
 Route::get('/producto/nuevo','ControladorProducto@nuevo')->name('nuevo.medicamento');
-Route::get('/medicamentos','ControladorProducto@seleccionarTodoLosP')->name('selecionar.medicamentos');
+Route::post('/producto/nuevo','ControladorProducto@ingresar_producto')->name('selecionar.medicamentos');
+Route::get('/producto/filtrar','ControladorProducto@filtrar_P');//direcion que trabaja con AJAX
+Route::get('/producto/editar/{id}', 'ControladorProducto@editar');
+Route::post('/producto/editar/{id}', 'ControladorProducto@ingresar_producto');
+Route::get('/producto/eliminar/{id}', 'ControladorProducto@eliminar');
 
 /* Seccion */
 Route::get('/seccion', 'ControladorSeccion@index');

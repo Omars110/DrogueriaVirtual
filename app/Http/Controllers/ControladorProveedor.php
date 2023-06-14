@@ -75,19 +75,7 @@ class ControladorProveedor extends Controller{
          $dato = $_GET['dato'];
          $proveedor = new Proveedor();
          $aProveedor = $proveedor->filtrar($dato);
-
          if ($aProveedor) { 
-            for ($i=0 ; $i < count($aProveedor) ; $i++ ) { 
-               $dato = array();
-               $dato[] = $aProveedor[$i]->idproveedor;
-               $dato[] = $aProveedor[$i]->nombre;
-               $dato[] = $aProveedor[$i]->telefono;
-               $dato[] = $aProveedor[$i]->direccion;
-               $dato[] = $aProveedor[$i]->fk_idsucursalProveedor;
-               $row [] = $dato;
-            }
-            //print_r($row);
-            //exit;
             $row = json_encode($aProveedor,JSON_UNESCAPED_UNICODE);
             echo $row;
          }else{
@@ -100,18 +88,6 @@ class ControladorProveedor extends Controller{
          $proveedor = new Proveedor();
          $aProveedor = $proveedor->seleccionarTodo();
          if ($aProveedor) { 
-
-            for ($i=0 ; $i < count($aProveedor) ; $i++ ) { 
-               $dato = array();
-               $dato[] = $aProveedor[$i]->idproveedor;
-               $dato[] = $aProveedor[$i]->nombre;
-               $dato[] = $aProveedor[$i]->telefono;
-               $dato[] = $aProveedor[$i]->direccion;
-               $dato[] = $aProveedor[$i]->fk_idsucursalProveedor;
-               $row[] = $dato;
-            }
-            //print_r($row);
-            //exit;
             $row = json_encode($aProveedor,JSON_UNESCAPED_UNICODE);
             echo $row;
          }else{
@@ -120,3 +96,36 @@ class ControladorProveedor extends Controller{
       }  
    }
 }
+
+
+
+
+/*for ($i=0 ; $i < count($aProveedor) ; $i++ ) { 
+   $dato = array();
+   $dato[] = $aProveedor[$i]->idproveedor;
+   $dato[] = $aProveedor[$i]->nombre;
+   $dato[] = $aProveedor[$i]->telefono;
+   $dato[] = $aProveedor[$i]->direccion;
+   $dato[] = $aProveedor[$i]->fk_idsucursalProveedor;
+   $row [] = $dato;
+}
+//print_r($row);
+//exit;*/
+
+/*@foreach ($aMedicamentos as $medicamento)
+                  <tr>
+                     <td>{{ $medicamento->nombre }}</td>
+                     <td>{{ $medicamento->codigo_barra }}</td>
+                     <td>{{ $medicamento->cantidad_interna }}</td>
+                     <td>{{ $medicamento->cantidad_externa }}</td>
+                     <td>{{ $medicamento->fecha_ingreso}}</td>
+                     <td>{{ $medicamento->fecha_vencimiento }}</td>
+                     <td>{{ $medicamento->precio }}</td>
+                     <td>{{ $medicamento->lote }}</td>
+                     <td>{{ $medicamento->fk_idseccion }}</td>
+                     <td>{{ $medicamento->fk_idproveedor }}</td>
+                     <td>{{ $medicamento->fk_idlaboratorio }}</td>
+                     <td>{{ $medicamento->fk_idtipo_medicamento }}</td>
+                     <td> eliminar</td>
+                  </tr>
+               @endforeach*/

@@ -33,7 +33,7 @@ class Producto extends Model
       //print_r($get);
       //exit;
 
-      $this->idmedicamento = $request->input('');
+      $this->idmedicamento = $request->input('txtIdmedicamento');
       $this->nombre = $request->input('txtNombre');
       $this->codigo_barra = $request->input('txtCodigoBarra');
       $this->cantidad_interna = $request->input('txtCantidadInterna');
@@ -103,8 +103,91 @@ class Producto extends Model
                      fk_idseccion,
                      fk_idproveedor,
                      fk_idlaboratorio,
-                     fk_idtipo_medicamento FROM medicamentos";
+                     fk_idtipo_medicamento 
+                     FROM medicamentos";
       $productos = DB::select($sql);
       return $productos;
+   }
+
+   public function seleccionarPorId($id)
+   {
+      $sql = "SELECT idmedicamento,
+                     nombre,
+                     codigo_barra,
+                     cantidad_interna,
+                     cantidad_externa,
+                     fecha_ingreso,
+                     precio,
+                     fecha_vencimiento,
+                     lote,
+                     fk_idseccion,
+                     fk_idproveedor,
+                     fk_idlaboratorio,
+                     fk_idtipo_medicamento 
+                     FROM medicamentos WHERE idmedicamento = :id";
+      $medicamento = DB::select($sql,['id'=>$id]);
+      return $medicamento;
+   }
+
+   public function actualizar()
+   {  
+      $sql = "UPDATE medicamentos SET nombre = ?,
+                                       codigo_barra = ?,
+                                       cantidad_interna = ?,
+                                       cantidad_externa = ?,
+                                       fecha_ingreso = ?,
+                                       precio = ?,
+                                       fecha_vencimiento = ?,
+                                       lote = ?,
+                                       fk_idseccion = ?,
+                                       fk_idproveedor = ?,
+                                       fk_idlaboratorio = ?,
+                                       fk_idtipo_medicamento = ? 
+                                    WHERE idmedicamento = ? ";
+      $resultado = DB::update($sql,[$this->nombre,
+                                    $this->codigo_barra,
+                                    $this->cantidad_interna,
+                                    $this->cantidad_externa,
+                                    $this->fecha_ingreso,
+                                    $this->precio,
+                                    $this->fecha_vencimiento,
+                                    $this->lote,
+                                    $this->fk_idseccion,
+                                    $this->fk_idproveedor,
+                                    $this->fk_idlaboratorio,
+                                    $this->fk_idtipo_medicamento,
+                                    $this->idmedicamento]);
+      return $resultado;
+   }
+
+   public function  eleminar($id)
+   {
+      $sql = " DELETE FROM medicamentos WHERE idmedicamento = :id";
+      $rDelete = DB::delete($sql,['id'=>$id]);
+      return($rDelete);
+   }
+
+
+   public function filtrar($dato)
+   {
+      $sql = "SELECT idmedicamento,
+                     nombre,
+                     codigo_barra,
+                     cantidad_interna,
+                     cantidad_externa,
+                     fecha_ingreso,
+                     precio,
+                     fecha_vencimiento,
+                     lote,
+                     fk_idseccion,
+                     fk_idproveedor,
+                     fk_idlaboratorio,
+                     fk_idtipo_medicamento 
+                     FROM medicamentos WHERE (nombre LIKE '%$dato%' OR
+                                              codigo_barra LIKE '%$dato%' OR
+                                              fecha_vencimiento LIKE '%$dato%'
+                                              )";
+   $medicamentos = DB::select($sql);
+   return $medicamentos;
    }
 }
