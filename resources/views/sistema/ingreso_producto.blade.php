@@ -17,7 +17,7 @@
          @endif
       </div>
       <!-- ======= Section mesenger ======= --> 
-      <form action="" method="POST" class="mt-0">
+      <form action="" method="POST" class="mt-0" enctype="multipart/form-data">
          <div class="row">
                <div>
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -133,11 +133,22 @@
                      @endif
                   </select>
                </div>
-               <!-- ======= Section tipo medicamentos ======= -->               
+               <!-- ======= Section tipo medicamentos ======= -->  
+<!-- ====================================================================================================================================== --> 
+               <!-- ======= Adjuntar archivo ======= -->  
+               <div class="form-group col-lg-6">
+                 <label for="archivo">imagen:*</label>
+                 <input type="file" name="archivo" id="archivo" class="form-control-file" accept=".jpg, .jpeg, png">
+                 <small>Acepta: *.jpg, *.jpeg, *.png</small>
+               </div>
+               <!-- ======= Adjuntar archivo ======= --> 
+<!-- ====================================================================================================================================== -->
+               <!-- ======= Botom ======= -->
                <div class="form-group col-lg-6">
                   <button type="submit" name="btnEnviar" id="" value="" class="btn btn-primary mt-3" style="border-radius: 35px">Guardar</button>
                   <a href="/producto/index" class="btn btn-danger mt-3" style="border-radius: 35px">Regresar</a>
                </div>
+               <!-- ======= Boton ======= -->
             </div>
       </form>  
    </section>

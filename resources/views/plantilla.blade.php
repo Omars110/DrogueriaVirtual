@@ -1,38 +1,35 @@
 <!doctype html>
 <html lang="es">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>@yield('titulo')</title>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>@yield('titulo')</title>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
 
-<link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('css/bootstrap-select.min.css')}}" rel="stylesheet" type="text/css">
-<link href="{{ asset('css/normalize.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('css/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('css/fontawesome/css/all.min.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('css/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('css/estilos.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('css/fontawesome/css/fontawesome.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/bootstrap-select.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/normalize.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/fontawesome/css/all.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/estilos.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/fontawesome/css/fontawesome.min.css') }}" rel="stylesheet" type="text/css">
 
-<script src="{{ asset('js/jquery.min.js') }}"></script> 
-<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script> 
-<script src="{{ asset('js/jquery.easing.min.js') }}"></script> 
-<script src="{{ asset('js/Chart.min.js') }}"></script> 
-<script src="{{ asset('js/jquery.dataTables.js') }}"></script> 
-<script src="{{ asset('js/dataTables.bootstrap4.js') }}"></script> 
-<script src="{{ asset('js/sb-admin.min.js') }}"></script> 
-<script src="{{ asset('js/jquery.validate.js') }}"></script> 
-<script src="{{ asset('js/localization/messages_es.js') }}"></script> 
-<script src="{{ asset('js/funciones_generales.js') }}"></script> 
-<script src="{{ asset('js/bootstrap-select.js') }}"></script>
-<script src="{{ asset('js/popper.min.js') }}"></script>
-
-
-
+  <script src="{{ asset('js/jquery.min.js') }}"></script> 
+  <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script> 
+  <script src="{{ asset('js/jquery.easing.min.js') }}"></script> 
+  <script src="{{ asset('js/Chart.min.js') }}"></script> 
+  <script src="{{ asset('js/jquery.dataTables.js') }}"></script> 
+  <script src="{{ asset('js/dataTables.bootstrap4.js') }}"></script> 
+  <script src="{{ asset('js/sb-admin.min.js') }}"></script> 
+  <script src="{{ asset('js/jquery.validate.js') }}"></script> 
+  <script src="{{ asset('js/localization/messages_es.js') }}"></script> 
+  <script src="{{ asset('js/funciones_generales.js') }}"></script> 
+  <script src="{{ asset('js/bootstrap-select.js') }}"></script>
+  <script src="{{ asset('js/popper.min.js') }}"></script>
 </head>
 
 <body style="background-color: rgb(5, 188, 220)">

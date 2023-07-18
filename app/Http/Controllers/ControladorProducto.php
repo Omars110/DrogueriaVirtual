@@ -49,6 +49,16 @@ class ControladorProducto extends Controller {
       $cargarM = new Producto();
       $cargarM->CargarDatosFormulario($request); // se hicieron cambios de variables y parametros
 
+      if($_FILES["archivo"]["error"] === UPLOAD_ERR_OK)
+      {
+         $extension = \pathinfo($_FILES["archivo"]["name"], PATHINFO_EXTENSION);
+         $nombreArchivo = date('Ymdhmsi') . ".$extension";
+         $archivo = $_FILES["archivo"]["tmp_name"];
+         //@unlink(env('APP_PATH') . "/public/files/$productAnt->imagen"); //Eliminar imagen anterior
+         move_uploaded_file($archivo, env('APP_PATH') . "/public/archivos/imagenes_producto/$nombreArchivo");
+         $cargarM->imagen = $nombreArchivo;
+      }
+
       if($_POST['txtIdmedicamento'] > 0) {
          $cargarM->actualizar();
          $mensaje = 1;

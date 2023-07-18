@@ -11,8 +11,8 @@
             </div>               
          @endif
          <!-- ======= Section mesenger ======= -->  
-         <table class="table table-hover border">
-            <thead>
+         <table class="table border table-hover text-center table-bordered border-primary">
+            <thead class="table-secondary">
                <tr>
                   <th>LABORATORIO</th>
                   <th>TELEFONO</th>
@@ -22,7 +22,7 @@
                   <th>ACCIONES</th>
                </tr>
             </thead>
-            <tbody>
+            <tbody class="table-info">
                @foreach ($aLaboratorios as $laboratorio)
                   <tr>
                      <td>{{$laboratorio->nombre_farmaceutica}}</td>

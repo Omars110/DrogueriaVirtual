@@ -55,8 +55,8 @@ if($_GET)
           </div>
          <!-- Modal -->
 
-         <table class="table table-hover" id="tablaContacto">
-            <thead class="border">
+         <table id="tablaContacto" class="table border table-hover text-center table-bordered border-primary">
+            <thead class="table-secondary">
                <tr>
                   <th>PROVEEDOR</th>
                   <th>TELEFONO</th>
@@ -66,7 +66,7 @@ if($_GET)
                   </tr>
                </thead>
                   
-               <tbody class="border" id="proveedores">
+               <tbody class="table-info" id="proveedores">
                   
                </tbody>
       </div>

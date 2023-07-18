@@ -18,6 +18,7 @@ class Producto extends Model
                            'fecha_ingreso',
                            'fecha_vencimiento',
                            'lote',
+                           'imagen',
                            'fk_idseccion',
                            'fk_idproveedor',
                            'fk_idlaboratorio',
@@ -42,6 +43,7 @@ class Producto extends Model
       $this->precio = $request->input('numPrecio');
       $this->fecha_vencimiento = $request->input('txtFechaDeVenciemiento');
       $this->lote = $request->input('txtLote');
+      $this->imagen = '';
       $this->fk_idseccion = $request->input('lstSeccion');
       $this->fk_idproveedor = $request->input('lstProveedor');
       $this->fk_idlaboratorio = $request->input('lstlaboratorio');
@@ -69,11 +71,12 @@ class Producto extends Model
                                        precio,
                                        fecha_vencimiento,
                                        lote,
+                                       imagen,
                                        fk_idseccion,
                                        fk_idproveedor,
                                        fk_idlaboratorio,
                                        fk_idtipo_medicamento)
-                                     VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                                     VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
       $resultado = DB::insert($sql,[$this->nombre,
                                     $this->codigo_barra,
                                     $this->cantidad_interna,
@@ -82,6 +85,7 @@ class Producto extends Model
                                     $this->precio,
                                     $this->fecha_vencimiento,
                                     $this->lote,
+                                    $this->imagen,
                                     $this->fk_idseccion,
                                     $this->fk_idproveedor,
                                     $this->fk_idlaboratorio,
@@ -91,20 +95,24 @@ class Producto extends Model
    }
    public function seleccionarTodoLosP()
    {
-      $sql = "SELECT idmedicamento,
-                     nombre,
-                     codigo_barra,
-                     cantidad_interna,
-                     cantidad_externa,
-                     fecha_ingreso,
-                     precio,
-                     fecha_vencimiento,
-                     lote,
-                     fk_idseccion,
-                     fk_idproveedor,
-                     fk_idlaboratorio,
-                     fk_idtipo_medicamento 
-                     FROM medicamentos";
+      $sql = "SELECT A.idmedicamento,
+                     A.nombre,
+                     A.codigo_barra,
+                     A.cantidad_interna,
+                     A.cantidad_externa,
+                     A.fecha_ingreso,
+                     A.precio,
+                     A.fecha_vencimiento,
+                     A.lote,
+                     A.imagen,
+                     A.fk_idseccion,
+                     A.fk_idproveedor,
+                     A.fk_idlaboratorio,
+                     /*A.fk_idtipo_medicamento tener en cuanta que si hacer el inner join debes quitar los llaves foraneas fk de la tabla que corresponde */
+                     B.clasificacion
+                     FROM medicamentos A
+                     INNER JOIN tipos_medicamentos B ON A.fk_idtipo_medicamento = B.idtipoMedicamento";
+                     
       $productos = DB::select($sql);
       return $productos;
    }
@@ -120,6 +128,7 @@ class Producto extends Model
                      precio,
                      fecha_vencimiento,
                      lote,
+                     imagen,
                      fk_idseccion,
                      fk_idproveedor,
                      fk_idlaboratorio,
@@ -139,6 +148,7 @@ class Producto extends Model
                                        precio = ?,
                                        fecha_vencimiento = ?,
                                        lote = ?,
+                                       imagen =?,
                                        fk_idseccion = ?,
                                        fk_idproveedor = ?,
                                        fk_idlaboratorio = ?,
@@ -152,6 +162,7 @@ class Producto extends Model
                                     $this->precio,
                                     $this->fecha_vencimiento,
                                     $this->lote,
+                                    $this->imagen,
                                     $this->fk_idseccion,
                                     $this->fk_idproveedor,
                                     $this->fk_idlaboratorio,
@@ -169,24 +180,36 @@ class Producto extends Model
 
    public function filtrar($dato)
    {
-      $sql = "SELECT idmedicamento,
-                     nombre,
-                     codigo_barra,
-                     cantidad_interna,
-                     cantidad_externa,
-                     fecha_ingreso,
-                     precio,
-                     fecha_vencimiento,
-                     lote,
-                     fk_idseccion,
-                     fk_idproveedor,
-                     fk_idlaboratorio,
-                     fk_idtipo_medicamento 
-                     FROM medicamentos WHERE (nombre LIKE '%$dato%' OR
-                                              codigo_barra LIKE '%$dato%' OR
-                                              fecha_vencimiento LIKE '%$dato%'
-                                              )";
-   $medicamentos = DB::select($sql);
-   return $medicamentos;
+      $sql = "SELECT A.idmedicamento,
+                     A.nombre,
+                     A.codigo_barra,
+                     A.cantidad_interna,
+                     A.cantidad_externa,
+                     A.fecha_ingreso,
+                     A.precio,
+                     A.fecha_vencimiento,
+                     A.lote,
+                     A.imagen,
+                     C.columna,
+                     C.fila,
+                     B.nombre as proveedor,
+                     D.nombre_farmaceutica as farmaceutica,
+                     E.clasificacion 
+                     FROM medicamentos A 
+                     INNER JOIN proveedores B ON A.fk_idproveedor = B.idproveedor
+                     INNER JOIN secciones C ON A.fk_idseccion = C.idseccion
+                     INNER JOIN laboratorios D ON A.fk_idlaboratorio = D.idlaboratorio
+                     INNER JOIN tipos_medicamentos E ON A.fk_idtipo_medicamento = E.idtipoMedicamento
+                     WHERE(A.nombre LIKE '%$dato%' OR
+                           A.codigo_barra LIKE '%$dato%' OR
+                           A.fecha_vencimiento LIKE '%$dato%' OR
+                           B.nombre LIKE '%$dato%' OR
+                           C.columna LIKE '%$dato%' OR
+                           C.fila LIKE '%$dato%' OR
+                           D.nombre_farmaceutica LIKE '%$dato%'OR
+                           E.clasificacion LIKE '%$dato%'
+                           )";
+      $medicamentos = DB::select($sql);
+      return $medicamentos;
    }
 }

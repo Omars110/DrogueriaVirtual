@@ -14,10 +14,8 @@ use App\Http\Controllers\cursoController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('plantilla');
-});
+Route::get('/', function () {return view('plantilla_web');});
+Route::get('/admin', function () {return view('plantilla');});
 
 /* Producto */
 Route::get('/producto/index','ControladorProducto@index')->name('nuevo.medicamento');
@@ -61,3 +59,10 @@ Route::post('/Tipo_medicamento/nuevo', 'ControladorTipoMedicamento@ingresar_tipo
 Route::get('/Tipo_medicamento/editar/{id}', 'ControladorTipoMedicamento@editar');
 Route::post('/Tipo_medicamento/editar/{id}', 'ControladorTipoMedicamento@ingresar_tipoMedi');
 Route::get('/Tipo_medicamento/eliminar/{id}', 'ControladorTipoMedicamento@eliminar');
+
+
+/* WEB */
+
+/* Producto web */
+Route::get('/productoWeb/index', 'ControladorWebProducto@index');
+Route::get('/productoWeb/detalle', 'ControladorWebProducto@detalleProducto');//direcion que trabaja con AJAX / ubicacion js/main.js

@@ -12,8 +12,8 @@
    <!-- ======= Section mesenger ======= --> 
       <div class="form-group col-lg-6">
          <a class="btn-primary btn mb-2" href="/seccion/nuevo" style="border-radius: 35px"><i class="fa-solid fa-plus fa-beat" style="color: #ffffff;"></i>  Nueva seccion</a>
-         <table class="table table-hover">
-            <thead class="border">
+         <table class="table border table-hover text-center table-bordered border-primary">
+            <thead class="table-secondary">
                <tr>
                   <th class="text-center">COLUMNA</th>
                   <th class="text-center">FILA</th>
@@ -21,7 +21,7 @@
                   </tr>
                </thead>
                   
-               <tbody class="border">
+               <tbody class="table-info">
                   @foreach ($aSeccion  as $seccion)
                       <tr class="border">
                         <td class="text-center">{{$seccion->columna}}</td>

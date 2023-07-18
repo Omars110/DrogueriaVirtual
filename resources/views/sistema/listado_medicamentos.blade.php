@@ -83,10 +83,10 @@ $(document).ready(function (){
                                        <td>${element['fecha_vencimiento']}</td>
                                        <td>${element['precio']}</td>
                                        <td>${element['lote']}</td>
-                                       <td>${element['fk_idseccion']}</td>
-                                       <td>${element['fk_idproveedor']}</td>
-                                       <td>${element['fk_idtipo_medicamento']}</td>
-                                       <td>${element['fk_idlaboratorio']}</td>
+                                       <td>C:${element['columna']} / F:${element['fila']}</td>
+                                       <td>${element['proveedor']}</td>
+                                       <td>${element['farmaceutica']}</td>
+                                       <td>${element['clasificacion']}</td>
                                        <td>
                                           <a href="/producto/editar/${element['idmedicamento']}"><i class="fa-solid fa-pen-to-square" style="color: #1ed006;"></i></a>
                                           <a href="/producto/eliminar/${element['idmedicamento']}"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></a>
