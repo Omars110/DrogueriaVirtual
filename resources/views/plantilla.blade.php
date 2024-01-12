@@ -35,7 +35,7 @@
 <body style="background-color: rgb(5, 188, 220)">
 <section>
   <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid"><a class="navbar-brand" href="/">Drogueria Virtual</a>
+    <div class="container-fluid"> <a class="navbar-brand" href="/">Drogueria en Casa</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
       
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -77,7 +77,7 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/Tipo_medicamento/index">Listar tipos de medicamento</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="/Tipo_medicamento/nuevo">nuevo Tipo de medicamento</a></li>
+              <li><a class="dropdown-item" href="/Tipo_medicamento/nuevo">Nuevo Tipo de medicamento</a></li>
             </ul>
           </li>
         </ul>

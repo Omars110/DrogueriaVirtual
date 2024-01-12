@@ -14,14 +14,15 @@ use App\Http\Controllers\cursoController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {return view('plantilla_web');});
 Route::get('/admin', function () {return view('plantilla');});
 
 /* Producto */
-Route::get('/producto/index','ControladorProducto@index')->name('nuevo.medicamento');
-Route::get('/producto/nuevo','ControladorProducto@nuevo')->name('nuevo.medicamento');
-Route::post('/producto/nuevo','ControladorProducto@ingresar_producto')->name('selecionar.medicamentos');
-Route::get('/producto/filtrar','ControladorProducto@filtrar_P');//direcion que trabaja con AJAX
+Route::get('/producto/index', 'ControladorProducto@index')->name('nuevo.medicamento');
+Route::get('/producto/nuevo', 'ControladorProducto@nuevo')->name('nuevo.medicamento');
+Route::post('/producto/nuevo', 'ControladorProducto@ingresar_producto')->name('selecionar.medicamentos');
+Route::get('/producto/filtrar', 'ControladorProducto@filtrar_P'); //direcion que trabaja con AJAX
 Route::get('/producto/editar/{id}', 'ControladorProducto@editar');
 Route::post('/producto/editar/{id}', 'ControladorProducto@ingresar_producto');
 Route::get('/producto/eliminar/{id}', 'ControladorProducto@eliminar');
@@ -36,10 +37,10 @@ Route::get('/seccion/eliminar/{id}', 'ControladorSeccion@eliminar');
 
 
 /* Proveedor */
-Route::get('/proveedor/index','ControladorProveedor@index');
+Route::get('/proveedor/index', 'ControladorProveedor@index');
 Route::get('/proveedor/nuevo', 'ControladorProveedor@nuevo');
 Route::post('/proveedor/nuevo', 'ControladorProveedor@ingresar_proveedor');
-Route::get('/proveedor/filtrar', 'ControladorProveedor@filtrado');//direcion que trabaja con AJAX
+Route::get('/proveedor/filtrar', 'ControladorProveedor@filtrado'); //direcion que trabaja con AJAX
 Route::get('/proveedor/editar/{id}', 'ControladorProveedor@editar');
 Route::post('/proveedor/editar/{id}', 'ControladorProveedor@ingresar_proveedor');
 Route::get('/proveedor/eliminar/{id}', 'ControladorProveedor@eliminar');
@@ -65,4 +66,15 @@ Route::get('/Tipo_medicamento/eliminar/{id}', 'ControladorTipoMedicamento@elimin
 
 /* Producto web */
 Route::get('/productoWeb/index', 'ControladorWebProducto@index');
-Route::get('/productoWeb/detalle', 'ControladorWebProducto@detalleProducto');//direcion que trabaja con AJAX / ubicacion js/main.js
+Route::get('/productoWeb/detalle', 'ControladorWebProducto@detalleProducto'); //direcion que trabaja con AJAX / ubicacion js/main.js  
+Route::get('/productoWeb/pedidoProducto', 'ControladorWebProducto@pedidos_producto'); //direcion que trabaja con AJAX (function dadosCarritos)
+Route::get('/productoWeb/eliminarP_C/{id}', 'ControladorWebProducto@eliminarProduct_Carr');
+
+/* Cliente */
+Route::get('/registrar/index', 'ControladorCliente@index');
+Route::post('/registrar/index', 'ControladorCliente@ingresar_cliente');
+
+/* login */
+Route::get('/login/index', 'ControladorLogin@index');
+Route::post('/login/index', 'ControladorLogin@ingresar_login');
+Route::get('/login/cerrar_sesion', 'ControladorLogin@cerrar_sesion');

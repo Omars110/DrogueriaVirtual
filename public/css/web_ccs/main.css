@@ -981,6 +981,12 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 /*---------------------------------------------*/
+.icono-eliminar {
+  float: right;
+  margin-right: 15px;
+  display: inline-block;
+}
+
 .header-cart-item-img {
   width: 60px;
   position: relative;
@@ -1008,7 +1014,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(255, 5, 5, 0.5);
   color: #fff;
   transition: all 0.3s;
   -webkit-transition: all 0.3s;
