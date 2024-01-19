@@ -36,7 +36,7 @@ class ControladorWebProducto extends Controller
         $producto = new Producto();
         $aProducto = $producto->seleccionarTodoLosP();
 
-        return view("web.producto", compact('titulo', 'aTipoMedi', 'aProducto', 'login', 'onCarrucel', 'aCarritoProducto','tamaño'));
+        return view("web.producto", compact('titulo', 'aTipoMedi', 'aProducto', 'login', 'onCarrucel', 'aCarritoProducto', 'tamaño'));
     }
 
     public function detalleProducto(Request $get)
@@ -104,9 +104,31 @@ class ControladorWebProducto extends Controller
         }
     }
 
-    public function eliminarProduct_Carr($id) {
+    public function eliminarProduct_Carr($id)
+    {
         $pedidos_producto = new Pedidos_productos();
         $repuesta = $pedidos_producto->eliminarProductoCarrito($id);
         return redirect("/productoWeb/index");
+    }
+
+    public function busquedaCompra(Request $get)
+    {
+        if ($_GET) {
+            if ($_GET["dato"]) {
+                $buscar = $_GET["dato"];
+                $producto = new Producto();
+                $productoEncontrado = $producto->filtrar($buscar);
+
+                if ($productoEncontrado) {
+                    $productoEncontrado_em = json_encode($productoEncontrado, JSON_UNESCAPED_UNICODE);
+                    echo $productoEncontrado_em;
+                } else {
+                    print("no hay producto en el momento");
+                }
+                
+            }else{
+                print('introdusca un nombre');
+            }
+        }
     }
 }

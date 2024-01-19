@@ -66,9 +66,12 @@ Route::get('/Tipo_medicamento/eliminar/{id}', 'ControladorTipoMedicamento@elimin
 
 /* Producto web */
 Route::get('/productoWeb/index', 'ControladorWebProducto@index');
+Route::get('/productoWeb/compraBuscar', 'ControladorWebProducto@busquedaCompra');
 Route::get('/productoWeb/detalle', 'ControladorWebProducto@detalleProducto'); //direcion que trabaja con AJAX / ubicacion js/main.js  
 Route::get('/productoWeb/pedidoProducto', 'ControladorWebProducto@pedidos_producto'); //direcion que trabaja con AJAX (function dadosCarritos)
 Route::get('/productoWeb/eliminarP_C/{id}', 'ControladorWebProducto@eliminarProduct_Carr');
+
+
 
 /* Cliente */
 Route::get('/registrar/index', 'ControladorCliente@index');

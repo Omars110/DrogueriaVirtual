@@ -7,7 +7,7 @@ class ControladorProveedor extends Controller{
 
    public function index()//Se crea la funcion index para visualizar en una lista todos los proveedores registrados
    {
-      $titulo = 'Proveedores';//titulo que se pasa ala vista
+      $titulo = 'Proveedores';//titulo que se pasa a la vista
       $mensaje = 0;//Variable inicializada en 0
 
       $proveedor = new Proveedor();// nuevo objeto de tipo proveedor
@@ -22,8 +22,8 @@ class ControladorProveedor extends Controller{
 
    public function nuevo()//Se crea la funcion nuevo para visualizar los campos que se van a registrar
    {
-      $titulo = 'Nuevo proveedor';//Titulo que se pasa ala vista 
-      $aProveedor = array(); //Se crea este array vacio para pasarlo ala vista
+      $titulo = 'Nuevo proveedor';//Titulo que se pasa a la vista 
+      $aProveedor = array(); //Se crea este array vacio para pasarlo a la vista
       return view('sistema.crear_proveedor', compact('titulo', 'aProveedor'));//Se envian todas las variables a la vista para ser visulaisadas
    }
 

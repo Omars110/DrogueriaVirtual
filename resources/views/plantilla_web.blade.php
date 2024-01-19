@@ -138,12 +138,19 @@
 					<img src="/archivos/icons/icon-close2.png" alt="CLOSE">
 				</button>
 
-				<form class="wrap-search-header flex-w p-l-15">
-					<button type="submit" id="btnBuscar" name="btnBuscar" class="flex-c-m trans-04">
+				<!--<form class="wrap-search-header flex-w p-l-15" method="POST" action="">-->
+				<div class="wrap-search-header flex-w p-l-15">
+					<!-- ======= Section token ======= -->
+					<div>
+						<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+					</div>
+					<!-- ======= Section token ======= -->
+					<button type="submit" id="btnBuscarMenu" name="btnBuscarMenu" class="flex-c-m trans-04">
 						<i class="zmdi zmdi-search"></i>
 					</button>
-					<input class="plh3" type="text" name="buscar" id="buscar" placeholder="!Hola¡ a la Orden">
-				</form>
+					<input class="plh3" type="text" name="compraBuscar" id="compraBuscar" placeholder="!Hola¡ a la Orden">
+				</div>
+				<!--</form>-->
 			</div>
 		</div>
 	</header>
@@ -219,7 +226,7 @@
 	</div>
 	<!-- Carrusel -->
 	@if($onCarrucel === 'on')
-	<section class="section-slide">
+	<section class="section-slide" id="off_carrucel">
 		<div class="wrap-slick1">
 			<div class="slick1">
 				<div class="item-slick1" style="background-image: url(/archivos/imagenes_producto/2023062906065201.png);">
@@ -298,9 +305,9 @@
 	</section>
 	@endif
 	</header>
-	<div>
+	<main>
 		@yield('contenido')
-	</div>
+	</main>
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
 		<div class="container">
@@ -525,6 +532,7 @@
 			$(this).on('click', function() {
 				var nameProduct = $('#nombreP').attr("value");
 				swal(nameProduct, "Añadido a tu carrito !", "success");
+				$('.js-modal1').removeClass('show-modal1');
 			});
 		});
 	</script>

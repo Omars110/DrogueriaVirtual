@@ -126,7 +126,7 @@ class ControladorProducto extends Controller {
             }else{
                $noDato = array('noDato');
                $Dato_em = json_encode($noDato, JSON_UNESCAPED_UNICODE);
-                echo $Dato_em;
+               echo $Dato_em;
             }
          }else{
             $noDato = array('noDato');

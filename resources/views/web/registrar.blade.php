@@ -18,6 +18,7 @@
 							<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 						</div>
 						<!-- ======= Section token ======= -->
+						
 						<!-- ======= Cacturar id para poder actualizar y registar ======= -->
 						<div>
 							<input type="hidden" name="idcliente" id="idcliente" value="">
