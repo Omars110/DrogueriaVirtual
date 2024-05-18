@@ -57,7 +57,7 @@
 						<ul class="main-menu">
 							<li><a href="#">Inicio</a></li>
 							<li><a href="/productoWeb/index">Medicamento</a></li>
-							<li class="label1" data-label1="hot"><a href="shoping-cart.html">Factura</a></li>
+							<li class="label1" data-label1="hot"><a href="/factura/index">Factura</a></li>
 							<li><a href="blog.html">Blog</a></li>
 							<li><a href="about.html">Quienes somos</a></li>
 							<li><a href="contact.html">Contacto</a></li>
@@ -212,11 +212,11 @@
 					</div>
 
 					<div class="header-cart-buttons flex-w w-full">
-						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+						<a href="/factura/index" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
 							Ver Carrito
 						</a>
 
-						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+						<a href="/factura/index" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
 							Confirmar
 						</a>
 					</div>
@@ -563,6 +563,9 @@
 			});
 		});
 	</script>
+
+	
+
 </body>
 
 </html>

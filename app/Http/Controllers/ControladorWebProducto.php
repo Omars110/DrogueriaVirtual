@@ -125,8 +125,7 @@ class ControladorWebProducto extends Controller
                 } else {
                     print("no hay producto en el momento");
                 }
-                
-            }else{
+            } else {
                 print('introdusca un nombre');
             }
         }

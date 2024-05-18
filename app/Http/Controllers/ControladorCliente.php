@@ -20,7 +20,7 @@ class ControladorCliente extends Controller
 		} else {
 			$login = '';
 		}
-		return view('web.registrar', compact('titulo', 'login', 'onCarrucel','aCarritoProducto','tamaño'));
+		return view('web.registrar', compact('titulo', 'login', 'onCarrucel', 'aCarritoProducto', 'tamaño'));
 	}
 
 	public function ingresar_cliente(Request $request)
@@ -31,7 +31,6 @@ class ControladorCliente extends Controller
 		$cliente = new Cliente();
 		$cliente->CargarFormulario($request);
 		$cliente->insertar_C();
-
-		return redirect('/productoWeb/index');
+		return redirect('/login/index');
 	}
 }

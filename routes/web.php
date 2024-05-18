@@ -15,8 +15,12 @@ use App\Http\Controllers\cursoController;
 |
 */
 
-Route::get('/', function () {return view('plantilla_web');});
-Route::get('/admin', function () {return view('plantilla');});
+Route::get('/', function () {
+    return view('plantilla_web');
+});
+Route::get('/admin', function () {
+    return view('plantilla');
+});
 
 /* Producto */
 Route::get('/producto/index', 'ControladorProducto@index')->name('nuevo.medicamento');
@@ -71,8 +75,6 @@ Route::get('/productoWeb/detalle', 'ControladorWebProducto@detalleProducto'); //
 Route::get('/productoWeb/pedidoProducto', 'ControladorWebProducto@pedidos_producto'); //direcion que trabaja con AJAX (function dadosCarritos)
 Route::get('/productoWeb/eliminarP_C/{id}', 'ControladorWebProducto@eliminarProduct_Carr');
 
-
-
 /* Cliente */
 Route::get('/registrar/index', 'ControladorCliente@index');
 Route::post('/registrar/index', 'ControladorCliente@ingresar_cliente');
@@ -81,3 +83,6 @@ Route::post('/registrar/index', 'ControladorCliente@ingresar_cliente');
 Route::get('/login/index', 'ControladorLogin@index');
 Route::post('/login/index', 'ControladorLogin@ingresar_login');
 Route::get('/login/cerrar_sesion', 'ControladorLogin@cerrar_sesion');
+
+/* Factura */
+Route::get('/factura/index', 'ControladorFactura@index');
