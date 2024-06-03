@@ -1,30 +1,33 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\entidades\Proveedor;
 use Illuminate\Http\Request;
 
-class ControladorProveedor extends Controller{
+class ControladorProveedor extends Controller
+{
 
-   public function index()//Se crea la funcion index para visualizar en una lista todos los proveedores registrados
+   public function index() //Se crea la funcion index para visualizar en una lista todos los proveedores registrados
    {
-      $titulo = 'Proveedores';//titulo que se pasa a la vista
-      $mensaje = 0;//Variable inicializada en 0
+      $titulo = 'Proveedores'; //titulo que se pasa a la vista
+      $mensaje = 0; //Variable inicializada en 0
 
-      $proveedor = new Proveedor();// nuevo objeto de tipo proveedor
-      $aProveedor = $proveedor->seleccionarTodo();//Se crea una variable para guardar el resgristro que viene de la consulta de(selecionar todos los registros existente ne la DB)
-      if(!$aProveedor){//Se pregunta si la la variable es diferente a true. si lo es entre al if()
+      $proveedor = new Proveedor(); // nuevo objeto de tipo proveedor
+      $aProveedor = $proveedor->seleccionarTodo(); //Se crea una variable para guardar el resgristro que viene de la consulta de(selecionar todos los registros existente ne la DB)
+      if (!$aProveedor) { //Se pregunta si la la variable es diferente a true. si lo es entre al if()
          $mensaje == 1;
          return view('sistema.listar_proveedores', compact('titulo', 'aProveedor', 'mensaje'));
-      }else{
+      } else {
          return view('sistema.listar_proveedores', compact('titulo', 'aProveedor'));
-      }   
+      }
    }
 
-   public function nuevo()//Se crea la funcion nuevo para visualizar los campos que se van a registrar
+   public function nuevo() //Se crea la funcion nuevo para visualizar los campos que se van a registrar
    {
-      $titulo = 'Nuevo proveedor';//Titulo que se pasa a la vista 
+      $titulo = 'Nuevo proveedor'; //Titulo que se pasa a la vista 
       $aProveedor = array(); //Se crea este array vacio para pasarlo a la vista
-      return view('sistema.crear_proveedor', compact('titulo', 'aProveedor'));//Se envian todas las variables a la vista para ser visulaisadas
+      return view('sistema.crear_proveedor', compact('titulo', 'aProveedor')); //Se envian todas las variables a la vista para ser visulaisadas
    }
 
    public function ingresar_proveedor(Request $request)
@@ -35,20 +38,20 @@ class ControladorProveedor extends Controller{
       $proveedor = new Proveedor();
       $proveedor->CargarDatosFormulario($request);
 
-      if($_POST['txtIdProveedor'] > 0) {
+      if ($_POST['txtIdProveedor'] > 0) {
          $mensaje = 1;
          $proveedor->actualizar();
          $aProveedor = array();
-         return(view('sistema.crear_proveedor',compact('titulo', 'mensaje', 'aProveedor')));
+         return (view('sistema.crear_proveedor', compact('titulo', 'mensaje', 'aProveedor')));
       } else {
          $rInsert = $proveedor->insertar();
          $aProveedor = array();
          if ($rInsert == 1) {
             $mensaje = 1;
-            return(view('sistema.crear_proveedor',compact('titulo', 'mensaje', 'aProveedor')));
+            return (view('sistema.crear_proveedor', compact('titulo', 'mensaje', 'aProveedor')));
          } else {
             $mensaje = 2;
-            return(view('sistema.crear_proveedor',compact('titulo', 'mensaje', 'aProveedor')));
+            return (view('sistema.crear_proveedor', compact('titulo', 'mensaje', 'aProveedor')));
          }
       }
    }
@@ -59,41 +62,43 @@ class ControladorProveedor extends Controller{
 
       $proveedor = new Proveedor();
       $aProveedor = $proveedor->seleccionarPorId($id);
-      return(view('sistema.crear_proveedor',compact('titulo', 'aProveedor')));
+      return (view('sistema.crear_proveedor', compact('titulo', 'aProveedor')));
    }
 
    public function eliminar($id)
    {
       $proveedor = new Proveedor();
       $proveedor->eleminar($id);
-      return(redirect('/proveedor/index'));
+      return (redirect('/proveedor/index'));
    }
 
    public function filtrado(Request $get)
    {
-      if($_GET['valid'] == 'omarsoto12.'){//NO ALVIDAR CAMBIAR ESTE COMANDO
+      if ($_GET['valid'] == 'omarsoto12.') { //NO ALVIDAR CAMBIAR ESTE COMANDO
          $dato = $_GET['dato'];
          $proveedor = new Proveedor();
          $aProveedor = $proveedor->filtrar($dato);
-         if ($aProveedor) { 
-            $row = json_encode($aProveedor,JSON_UNESCAPED_UNICODE);
+         if ($aProveedor) {
+            $row = json_encode($aProveedor, JSON_UNESCAPED_UNICODE);
             echo $row;
-         }else{
+         } else {
             echo 'noDato';
          }
-      }   
+      }
 
-      if($_GET['valid'] == 'omarsoto12'){//NO ALVIDAR CAMBIAR ESTE COMANDO
+      if ($_GET['valid'] == 'omarsoto12') { //NO ALVIDAR CAMBIAR ESTE COMANDO
          $dato = '';
          $proveedor = new Proveedor();
          $aProveedor = $proveedor->seleccionarTodo();
-         if ($aProveedor) { 
-            $row = json_encode($aProveedor,JSON_UNESCAPED_UNICODE);
+         if ($aProveedor) {
+            $row = json_encode($aProveedor, JSON_UNESCAPED_UNICODE);
             echo $row;
-         }else{
-            echo 'noDato';
+         } else {
+            $noDato = array('noDato');
+            $Dato_em = json_encode($noDato, JSON_UNESCAPED_UNICODE);
+            echo $Dato_em;
          }
-      }  
+      }
    }
 }
 

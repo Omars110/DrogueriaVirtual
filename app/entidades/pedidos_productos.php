@@ -60,6 +60,8 @@ class Pedidos_productos extends Model
                      A.cantidad,
                      A.precio_unitario,
                      A.total,
+                     A.fk_idmedicamento,
+                     A.fk_idcarrito,
                      B.nombre,
                      B.imagen,
                      A.fk_idcarrito

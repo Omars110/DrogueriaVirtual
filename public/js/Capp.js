@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
   const valorCarrito = () => {
     const valorTotal = document.getElementById('totalFactura');
@@ -52,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       async onApprove(data, actions) {
         try {
-          const response = await fetch(`/api/orders/${data.orderID}/capture`, {
+          const response = await fetch(`http://localhost:8888/api/orders/${data.orderID}/capture`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -64,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
           //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
           //   (2) Other non-recoverable errors -> Show a failure message
           //   (3) Successful transaction -> Show confirmation or thank you message
-
+          //console.log("datos de orden" + orderData);
           const errorDetail = orderData?.details?.[0];
 
           if (errorDetail?.issue === "INSTRUMENT_DECLINED") {
@@ -85,11 +84,14 @@ document.addEventListener('DOMContentLoaded', () => {
             resultMessage(
               `Transaction ${transaction.status}: ${transaction.id}<br><br>See console for all available details`,
             );
-            console.log(
-              "Capture result",
-              orderData,
-              JSON.stringify(orderData, null, 2),
-            );
+            // console.log(
+            //   "Capture result",
+            //   orderData,
+            //   JSON.stringify(orderData, null, 2),
+            // );
+            //document.getElementById('ordenDatosFactura').setAttribute('data-datosPaypal', JSON.stringify(orderData));
+            const event = new CustomEvent('datosPaypalRecibidos', { detail: orderData });
+            document.dispatchEvent(event);
           }
         } catch (error) {
           console.error(error);
@@ -100,6 +102,21 @@ document.addEventListener('DOMContentLoaded', () => {
       },
     })
     .render("#paypal-button-container");
+
+  /*function getCSRFToken() {
+    return new Promise(function (resolve, reject) {
+      $.ajax({
+        type: 'GET',
+        url: '/csrf-token',
+        success: function (response) {
+          resolve(response.csrf_token);
+        },
+        error: function (error) {
+          reject(error);
+        }
+      });
+    });
+  }*/
 
   // Example function to show a result to the user. Your site's UI library can be used instead.
   function resultMessage(message) {

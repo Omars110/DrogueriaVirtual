@@ -5,6 +5,7 @@
 	<title>@yield('titulo')</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="{{ asset('/archivos/icons/favicon.png') }}" />
 	<!--===============================================================================================-->
@@ -59,7 +60,7 @@
 							<li><a href="/productoWeb/index">Medicamento</a></li>
 							<li class="label1" data-label1="hot"><a href="/factura/index">Factura</a></li>
 							<li><a href="blog.html">Blog</a></li>
-							<li><a href="about.html">Quienes somos</a></li>
+							<li><a href="/quienes-somos/index">Quienes somos</a></li>
 							<li><a href="contact.html">Contacto</a></li>
 							@if ($login === '1')
 							<li><a href="/login/cerrar_sesion">Cerrar sesion</a></li>
@@ -229,18 +230,18 @@
 	<section class="section-slide" id="off_carrucel">
 		<div class="wrap-slick1">
 			<div class="slick1">
-				<div class="item-slick1" style="background-image: url(/archivos/imagenes_producto/2023062906065201.png);">
+				<div class="item-slick1" style="background-image: url(/archivos/imagenes_producto/pediasure.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Women Collection 2018
+									Mejor promocion del mes de mayo
 								</span>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									NEW SEASON
+									pediasure
 								</h2>
 							</div>
 
@@ -253,18 +254,18 @@
 					</div>
 				</div>
 
-				<div class="item-slick1" style="background-image: url(/archivos/imagenes_producto/2023062906060010.png);">
+				<div class="item-slick1" style="background-image: url(/archivos/imagenes_producto/dolex.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Men New-Season
+								Mejor promocion del mes de mayo
 								</span>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									Jackets & Coats
+									dolex gripa
 								</h2>
 							</div>
 
@@ -277,18 +278,18 @@
 					</div>
 				</div>
 
-				<div class="item-slick1" style="background-image: url(/archivos/slide-03.jpg);">
+				<div class="item-slick1" style="background-image: url(/archivos/imagenes_producto/descongel.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Men Collection 2018
+								Mejor promocion del mes de mayo
 								</span>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									New arrivals
+									descongel gripa
 								</h2>
 							</div>
 

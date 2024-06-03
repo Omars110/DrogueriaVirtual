@@ -24,8 +24,6 @@
 			</span>
 		</div>
 	</div>
-
-
 	<!-- Shoping Cart -->
 	<form class="bg0 p-t-75 p-b-85">
 		<div class="container">
@@ -44,6 +42,8 @@
 								<?php
 								$total_factura = 0;
 								?>
+								<div id="arrayCarrito" data-arrayCarrito='<?php echo json_encode($aCarritoProducto); ?>'></div>
+								<!-- <?php print_r($aCarritoProducto); ?> line comentada para mirar informacion del carrito -->
 								@foreach ($aCarritoProducto as $itemCarrito)
 								<tr class="table_row">
 									<td class="column-1">
@@ -127,14 +127,16 @@
 
 								<div class="p-t-15">
 									<span class="stext-112 cl8">
-										Calculate Shipping
+										Seleccione metodo de pago
 									</span>
 
 									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
 										<select class="js-select2" name="time">
-											<option>Select a country...</option>
-											<option>USA</option>
-											<option>UK</option>
+											<option>Metodos de pago</option>
+											<option>Nequi</option>
+											<option>Efectivo</option>
+											<option>PayPal</option>
+											<option>PSE</option>
 										</select>
 										<div class="dropDownSelect2"></div>
 									</div>
@@ -181,7 +183,41 @@
 	</form>
 	<script src="https://www.paypal.com/sdk/js?client-id=AfEgTTiS59c_cJSBmCLxE2jfuqIE0ZXerJlRFX54rN_B-oFoGbS4TzNHgA5zGVEfXCQaMYKmuFOno08o&currency=USD"></script>
 	<script src="/js/Capp.js"></script>
-	<script type="modulo" src="./server.js"></script>
+	<script src="{{ asset('js/jquery.min.js') }}"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			document.addEventListener('datosPaypalRecibidos', function(event) {
+				const orderData = event.detail;
+				procesarDatos(orderData);
+			});
+		});
 
+		function procesarDatos(orderData) {
+			var arrayCarrito  = JSON.parse(document.getElementById('arrayCarrito').getAttribute('data-arrayCarrito'));
+			//var datos = {
+				//orderData: orderData,
+				//carrito: arrayCarrito,
+			//}
+			$.ajax({
+				type: "GET",
+				url: "{{asset('/factura/capture')}}",
+				dataType: "json",
+				data: {
+					orderData: orderData,
+					carrito: arrayCarrito,
+				},
+				
+				success: function(response) {
+					//console.log(response.data.orderData.payer.name.given_name);
+					alert(response.Message);
+					//console.log(response.Message);
+					//window.location.href = "{{asset('/quienes-somos/index')}}"
+				},
+				error: function(error) {
+					console.error(error);
+				}
+			});
+		}
+	</script>
 </body>
 @endsection

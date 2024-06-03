@@ -84,5 +84,11 @@ Route::get('/login/index', 'ControladorLogin@index');
 Route::post('/login/index', 'ControladorLogin@ingresar_login');
 Route::get('/login/cerrar_sesion', 'ControladorLogin@cerrar_sesion');
 
-/* Factura */
-Route::get('/factura/index', 'ControladorFactura@index');
+/* Despacho */
+Route::get('/factura/index', 'ControladorDespacho@index');
+Route::get('/factura/capture', 'ControladorDespacho@DatosDespachoPedido');
+Route::get('/factura/despachado', 'ControladorDespacho@PedidosDespacahdos');// Sirve para mostrarle al cliente todas sus comprar
+
+
+/* quieens somos /blop /contactanos */
+Route::get('/quienes-somos/index', 'ControladorFactura@quienesSomos');
