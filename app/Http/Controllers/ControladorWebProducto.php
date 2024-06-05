@@ -90,8 +90,8 @@ class ControladorWebProducto extends Controller
                 $aCarritoP = $pedidoProducto->seleccionarPorIdCarrirto($miCarrito[0]->idcarrito);
                 $tamañoC = count($aCarritoP);
                 $JsonCarrito = ['aCarrito' => $aCarritoP, 'tamaño' => $tamañoC];
-                $h1 = json_encode($JsonCarrito);
-                echo $h1;
+                $aCarritoJson = json_encode($JsonCarrito);
+                echo $aCarritoJson;
                 //return view("web.producto", compact('titulo', 'aTipoMedi', 'aProducto', 'login', 'onCarrucel'));
                 //return redirect('/productoWeb/index');
             } else {
