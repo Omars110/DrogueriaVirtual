@@ -208,10 +208,8 @@
 				},
 				
 				success: function(response) {
-					//console.log(response.data.orderData.payer.name.given_name);
 					alert(response.Message);
-					//console.log(response.Message);
-					//window.location.href = "{{asset('/quienes-somos/index')}}"
+					window.location.href = "{{asset('/productoWeb/index')}}"
 				},
 				error: function(error) {
 					console.error(error);

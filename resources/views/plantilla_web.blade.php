@@ -104,7 +104,7 @@
 					<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="5">
+				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="1458">
 					<i class="zmdi zmdi-favorite-outline"></i>
 				</a>
 			</div>
@@ -155,7 +155,7 @@
 			</div>
 		</div>
 	</header>
-	<!-- Carrito -->
+	<!-- Carrito Modal -->
 	<div class="wrap-header-cart js-panel-cart">
 		<div class="s-full js-hide-cart"></div>
 		<div class="header-cart flex-col-l p-l-65 p-r-25">
@@ -175,53 +175,56 @@
 			$cantidad_carrito = 0;
 			$c_P = 0;
 			?>
-			<div class="header-cart-content flex-w js-pscroll">
-				@foreach ($aCarritoProducto as $producto)
-				<ul class="header-cart-wrapitem w-full">
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="/archivos/imagenes_producto/{{$producto->imagen}}" alt="IMG">
+			<div id="carrito_modal" class="header-cart-content flex-w js-pscroll">
+				<div id="carrito_p">
+					@foreach ($aCarritoProducto as $producto)
+					<ul class="header-cart-wrapitem w-full">
+						<li class="header-cart-item flex-w flex-t m-b-12">
+							<div class="header-cart-item-img">
+								<img src="/archivos/imagenes_producto/{{$producto->imagen}}" alt="IMG">
+							</div>
+
+							<div class="header-cart-item-txt p-t-8">
+								<a href="/productoWeb/eliminarP_C/{{$producto->idpedido_producto}}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+									{{$producto->nombre}}
+								</a>
+
+								<span class="header-cart-item-info">
+									{{$producto->cantidad}} x ${{$producto->precio_unitario}}
+								</span>
+								<span class="header-cart-item-info">
+									Subtotal: {{$subtotal = $producto->cantidad * $producto->precio_unitario}}
+								</span>
+
+								<div class="icono-eliminar">
+									<a href="/productoWeb/eliminarP_C/{{$producto->idpedido_producto}}"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></a>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div id="cantidad_carrito">
+						<?php $total = $subtotal + $total; ?>
+					</div>
+					@endforeach
+				</div>
+				<div id="total_carrito">
+					<div class="w-full">
+						<div class="header-cart-total w-full p-tb-40">
+							Total: ${{$total}}
 						</div>
 
-						<div class="header-cart-item-txt p-t-8">
-							<a href="/productoWeb/eliminarP_C/{{$producto->idpedido_producto}}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								{{$producto->nombre}}
+						<div class="header-cart-buttons flex-w w-full">
+							<a href="/factura/index" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+								ver detalles
 							</a>
 
-							<span class="header-cart-item-info">
-								{{$producto->cantidad}} x ${{$producto->precio_unitario}}
-							</span>
-							<span class="header-cart-item-info">
-								Subtotal: {{$subtotal = $producto->cantidad * $producto->precio_unitario}}
-							</span>
-
-							<div class="icono-eliminar">
-								<a href="/productoWeb/eliminarP_C/{{$producto->idpedido_producto}}"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></a>
-							</div>
+							<a href="/factura/index" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+								Confirmar
+							</a>
 						</div>
-					</li>
-				</ul>
-				<div id="cantidad_carrito">
-					<?php
-					$total = $subtotal + $total;
-					?>
-				</div>
-				@endforeach
-				<div class="w-full">
-					<div class="header-cart-total w-full p-tb-40">
-						Total: ${{$total}}
-					</div>
-
-					<div class="header-cart-buttons flex-w w-full">
-						<a href="/factura/index" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							Ver Carrito
-						</a>
-
-						<a href="/factura/index" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-							Confirmar
-						</a>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
@@ -259,7 +262,7 @@
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-								Mejor promocion del mes de mayo
+									Mejor promocion del mes de mayo
 								</span>
 							</div>
 
@@ -283,7 +286,7 @@
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-								Mejor promocion del mes de mayo
+									Mejor promocion del mes de mayo
 								</span>
 							</div>
 
@@ -565,7 +568,7 @@
 		});
 	</script>
 
-	
+
 
 </body>
 

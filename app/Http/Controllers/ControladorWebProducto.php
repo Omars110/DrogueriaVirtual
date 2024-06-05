@@ -86,9 +86,14 @@ class ControladorWebProducto extends Controller
 
             if ($miCarrito) {
                 $pedidoProducto->fk_idcarrito = $miCarrito[0]->idcarrito;
-                $pedidoProducto->insertar_Pedido_Producto();
+                $answer = $pedidoProducto->insertar_Pedido_Producto();
+                $aCarritoP = $pedidoProducto->seleccionarPorIdCarrirto($miCarrito[0]->idcarrito);
+                $tamañoC = count($aCarritoP);
+                $JsonCarrito = ['aCarrito' => $aCarritoP, 'tamaño' => $tamañoC];
+                $h1 = json_encode($JsonCarrito);
+                echo $h1;
                 //return view("web.producto", compact('titulo', 'aTipoMedi', 'aProducto', 'login', 'onCarrucel'));
-                return redirect('/productoWeb/index');
+                //return redirect('/productoWeb/index');
             } else {
                 print('else');
 
@@ -98,7 +103,7 @@ class ControladorWebProducto extends Controller
                 $nuevoCarrito->insertar_MiCarrito();
                 $aCarritoNuevo = $nuevoCarrito->seleccionarPorIdCliente($idcliente);
                 $pedidoProducto->fk_idcarrito = $aCarritoNuevo[0]->idcarrito;
-                $pedidoProducto->insertar_Pedido_Producto();
+                $pedidoProducto->insertar_Pedido_Producto();           
                 return view("web.producto", compact('titulo', 'aTipoMedi', 'aProducto', 'login', 'onCarrucel'));
             }
         }

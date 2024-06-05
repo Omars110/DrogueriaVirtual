@@ -13,18 +13,9 @@ class Pedidos_productos extends Model
 
    protected $fillable = ['idpedido_producto', 'cantidad', 'precio_unitario', 'total', 'fk_idpedido', 'fk_idmedicamento', 'fk_idcarrito'];
 
-   public function __construct()
-   {
-   }
-   public function __get($atributo)
-   {
-      return $this->$atributo;
-   }
-   public function __set($atributo, $valor)
-   {
-      $this->$atributo = $valor;
-      return $this;
-   }
+   public function __construct(){}
+   public function __get($atributo){return $this->$atributo;}
+   public function __set($atributo, $valor){$this->$atributo = $valor;return $this;}
 
    public function CargarFormulario($request)
    {
@@ -51,6 +42,8 @@ class Pedidos_productos extends Model
          $this->fk_idmedicamento,
          $this->fk_idcarrito
       ]);
+
+      return $resultado;
       //return $this->idlaboratorio = DB::getPdo()->lastInsertId();
    }
 

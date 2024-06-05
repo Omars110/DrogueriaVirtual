@@ -34,12 +34,12 @@
 			<!-- Search product - (Buscar producto) -->
 			<div class="dis-none panel-search w-full p-t-10 p-b-15">
 				<!--<form action="" method="post">-->
-					<div class="bor8 dis-flex p-l-15">
-						<button type="submit" id="btnBuscar_2" name="buscar_2" class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
-							<i class="zmdi zmdi-search"></i>
-						</button>
-						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" id="compraBuscar_2" name="compraBuscar_2" placeholder="¡Hola! a la orden">
-					</div>
+				<div class="bor8 dis-flex p-l-15">
+					<button type="submit" id="btnBuscar_2" name="buscar_2" class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
+						<i class="zmdi zmdi-search"></i>
+					</button>
+					<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" id="compraBuscar_2" name="compraBuscar_2" placeholder="¡Hola! a la orden">
+				</div>
 				<!-- </form>-->
 			</div>
 
@@ -235,14 +235,19 @@
 
 <script src="{{asset('/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
 <script>
-//<!---------------------------------------------------- Busqueda desde boton buscar barra ------------------------------------------------------------------------------------>
+	//<!---------------------------------------------------- Busqueda desde boton buscar barra ------------------------------------------------------------------------------------>
 	$(document).ready(function() {
 		$('#btnBuscar_2').click(function(e) {
 			e.preventDefault();
 			var productoEncontrado;
 			var dato = $('#compraBuscar_2').val();
 			$.ajax({
-				type: "GET", url: "{{asset('/productoWeb/compraBuscar')}}", data: {dato: dato,}, dataType: "json",
+				type: "GET",
+				url: "{{asset('/productoWeb/compraBuscar')}}",
+				data: {
+					dato: dato,
+				},
+				dataType: "json",
 				success: function(response) {
 					if (response) {
 						$('#productoBuscar').html('');
@@ -252,8 +257,8 @@
 						$("#productoBuscar").addClass("row isotope-grid");
 
 						response.forEach(elemento => { //inicio del forEach (data-id1=${elemento['idmedicamento']} )
-							productoEncontrado =	
-		`<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${elemento['clasificacion']}">
+							productoEncontrado =
+								`<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${elemento['clasificacion']}">
 				<!-- Block2 -->
 				<div class="block2">
 					<div class="block2-pic hov-img0">
@@ -284,31 +289,40 @@
 					</div>
 				</div>
 			</div>`
-			$("#productoBuscar").append(productoEncontrado);		
-						});//Fin del forEach
+							$("#productoBuscar").append(productoEncontrado);
+						}); //Fin del forEach
 					}
+				},
+				error: function(error) {
+					console.error(error);
 				}
 			});
 		});
 	});
-//<!---------------------------------------------------- fin Busqueda desde boton buscar barra ------------------------------------------------------------------------------------>
-//<!---------------------------------------------------- Busqueda desde boton buscar menu ----------------------------------------------------------------------------------------->	
+	//<!---------------------------------------------------- fin Busqueda desde boton buscar barra ------------------------------------------------------------------------------------>
+	//<!---------------------------------------------------- Busqueda desde boton buscar menu ----------------------------------------------------------------------------------------->	
 	$(document).ready(function() {
 		$('#btnBuscarMenu').click(function(e) {
 			e.preventDefault();
 			var productoEncontrado;
 			var dato = $('#compraBuscar').val();
-			$.ajax({type: "GET", url: "{{asset('/productoWeb/compraBuscar')}}", data: {dato: dato,}, dataType: "json",
+			$.ajax({
+				type: "GET",
+				url: "{{asset('/productoWeb/compraBuscar')}}",
+				data: {
+					dato: dato,
+				},
+				dataType: "json",
 				success: function(response) {
 					if (response) {
 						$("#productoGeneral").hide();
 						$("#off_carrucel").hide();
-						$("#tipoMedic").css("padding-top", "20px");//se agrega 20px asia abajo para separar los tipos de medicamentos del menu atraves de jquery
+						$("#tipoMedic").css("padding-top", "20px"); //se agrega 20px asia abajo para separar los tipos de medicamentos del menu atraves de jquery
 						$("#productoBuscar").addClass("row isotope-grid");
 						$('#productoBuscar').html('');
 						response.forEach(elemento => {
-							productoEncontrado =	
-			`<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${elemento['clasificacion']}">
+							productoEncontrado =
+								`<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${elemento['clasificacion']}">
 				<!-- Block2 -->
 				<div class="block2">
 					<div class="block2-pic hov-img0">
@@ -339,9 +353,12 @@
 					</div>
 				</div>
 			</div>`
-			$("#productoBuscar").append(productoEncontrado);
+							$("#productoBuscar").append(productoEncontrado);
 						});
 					}
+				},
+				error: function(error) {
+					console.error(error);
 				}
 			});
 		});
@@ -386,6 +403,9 @@
 					$('#idmedicamento').attr("value", element['idmedicamento']);
 					$('#num-product').attr("value", 1);
 				});
+			},
+			error: function(error) {
+				console.error(error);
 			}
 		});
 	};
@@ -395,7 +415,8 @@
 		var precio_P = $('#precio').attr("value");
 		var id_P = $('#idmedicamento').attr("value");
 		var cantidad_P = $('#num-product').attr("value");
-
+		var carrito;
+		
 		$.ajax({
 			type: "GET",
 			url: "{{asset('/productoWeb/pedidoProducto')}}",
@@ -407,7 +428,74 @@
 			},
 			dataType: "json",
 			success: function(response) {
+				
 				console.log(response);
+				var tamaño = response.tamaño;
+				$('.js-show-cart').attr('data-notify', tamaño)
+				
+				var carritoHTML2;
+				var subtotal = 0;
+				var  total = 0;
+
+				$("#carrito_p").empty(); // Limpiar el contenido del contenedor
+				response.aCarrito.forEach(element => {
+
+					subtotal = element.cantidad * element.precio_unitario;
+					total += subtotal;
+
+					carritoHTML1 = `
+								
+					<ul class="header-cart-wrapitem w-full">
+						<li class="header-cart-item flex-w flex-t m-b-12">
+							<div class="header-cart-item-img">
+								<img src="/archivos/imagenes_producto/${element['imagen']}" alt="IMG">
+							</div>
+
+							<div class="header-cart-item-txt p-t-8">
+								<a href="/productoWeb/eliminarP_C/${element['idpedido_producto']}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								${element['nombre']}
+								</a>
+
+								<span class="header-cart-item-info">
+									${element['cantidad']} x ${element['precio_unitario']}
+								</span>
+								<span class="header-cart-item-info">
+									Subtotal: $${subtotal}
+								</span>
+
+								<div class="icono-eliminar">
+									<a href="/productoWeb/eliminarP_C/${element['idpedido_producto']}"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></a>
+								</div>
+							</div>
+						</li>
+					</ul>`
+					$('#carrito_p').append(carritoHTML1);
+				});
+				
+				carritoHTML2 =`
+				<div class="w-full">
+					<div class="header-cart-total w-full p-tb-40">
+							Total: ${total}
+					</div>
+
+					<div class="header-cart-buttons flex-w w-full">
+						<a href="/factura/index" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+							ver detalles
+						</a>
+
+						<a href="/factura/index" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+							Confirmar
+						</a>
+						</div>
+					</div>
+				</div>`
+				
+				$('#total_carrito').html(carritoHTML2);
+
+				
+			},
+			error: function(error) {
+				console.error(error);
 			}
 		});
 	}
